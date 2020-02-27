@@ -1,6 +1,6 @@
 # File: config.toml
 
-baseURL = "https://example.com"
+baseURL = "https://tozhan.github.io"
 languageCode = "en-us"
 defaultContentLanguage = "en-us"
 title = "Tony's Blogs"
