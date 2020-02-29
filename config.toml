@@ -4,7 +4,7 @@ baseURL = "https://tozhan.github.io"
 languageCode = "en-us"
 defaultContentLanguage = "en-us"
 title = "Tony's Blogs"
-copyright = "© 2020 Title"
+copyright = "© 2020 tozhan.github.io. All rights reserved."
 theme = "hugo-theme-okayish-blog"
 
 # Provide this id to enable Google Analytics
