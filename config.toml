@@ -1,23 +1,47 @@
 # File: config.toml
 
-baseURL = "https://tozhan.github.io"
+baseURL = "https://tozhan.github.io/"
 languageCode = "en-us"
 defaultContentLanguage = "en-us"
-title = "Tony's Blogs"
-copyright = "© 2020 tozhan.github.io. All rights reserved."
-theme = "hugo-theme-okayish-blog"
 
-# Provide this id to enable Google Analytics
-googleAnalytics = "UA-54832953-1"
+
+theme           = "casper-two"
+enableEmoji = true
+paginate        = 6
 
 [params]
+  title       = "Tony's Blogs"
+  copyright = "© 2020 tozhan.github.io. All rights reserved."
+  cover       = "img/cover.jpg"
+  # logo        = "img/author.jpg"
+  description = "Just Write It"
+  metaDescription = ""
+  googleAnalytics = "UA-54832953-1"
+  customCSS = []
+  RSSLink = ""
 
+  fbName = "tony.zhang.397948"
+  githubName = "tozhan"
 
-[taxonomies]
+  author = "Tony Zhang"
+  authorAvatar = "img/author.jpg"
+  authorWebsite = "https://tozhan.github.io"
+  # authorDescription = "Describe yourself.."
 
-[menu]
+  pageNotFoundTitle = "404 - Page not found"
 
-[languages]
+  #casper or caspertwo
+  singleViewStyle = "casper"
 
-[languages.en-us]
-languageName = "English (US)"
+[permalinks]
+  post = "/post/:slug/"
+
+[[menu.main]]
+  name = "Home"
+  url = "/post/"
+  weight = 200
+
+[[menu.main]]
+  name = "Machine Learning"
+  url = "/tags/Machine Learning"
+  weight = 100
