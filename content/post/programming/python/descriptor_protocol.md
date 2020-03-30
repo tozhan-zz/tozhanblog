@@ -1,6 +1,6 @@
 ---
 title: Python Descriptor Protocol Inside-out 
-date: 2020-02-22T13:26:17-08:00
+date: 2020-03-22T13:29:17-08:00
 authors: [Tony Zhang]
 keywords: ["python", "descriptor"]
 tags: ["programming", "python"]
