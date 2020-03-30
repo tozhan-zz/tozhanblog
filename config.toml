@@ -45,3 +45,8 @@ paginate        = 6
   name = "Machine Learning"
   url = "/tags/Machine Learning"
   weight = 100
+
+[[menu.main]]
+  name = "Programming"
+  url = "/tags/Programming"
+  weight = 100

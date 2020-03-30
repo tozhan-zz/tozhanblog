@@ -2,12 +2,25 @@
 title: "Gradient"
 date: 2020-02-22T13:26:17-08:00
 authors: [Tony Zhang]
-keywords: ["machine learning", "math"]
+keywords: ["machine learning", "math", "gradient"]
 tags: ["machine learning", "math"]
 image: /post/ml/math/gradient/title.png
 draft: false
 emoji: true
 ---
+<!-- TOC -->
+
+- [Introduction](#introduction)
+- [What is Gradient](#what-is-gradient)
+    - [One-dimensional Independent Variable](#one-dimensional-independent-variable)
+    - [Two-dimensional Independent Variables](#two-dimensional-independent-variables)
+    - [Multi-dimensional Independent Variables](#multi-dimensional-independent-variables)
+- [Gradient in Machine Learning](#gradient-in-machine-learning)
+    - [Gradient Descent](#gradient-descent)
+    - [Three Types of Gradient Descent](#three-types-of-gradient-descent)
+- [Conclusion](#conclusion)
+
+<!-- /TOC -->
 
 # Introduction
 
@@ -80,7 +93,8 @@ To calculate above limitation, we can take two steps to move from \\((x_0,y_0)\\
 
 Assuming \\(f(x,y)\\) is continuous, then we can rewite the directional derivative to
 
-$$D_\vec u = \lim \limits_{h \to 0}  \frac {f(x_0+h \bullet x_d, y_0+ h \bullet y_d) - f(x_0+h \bullet x_d, y_0) + f(x_0+h \bullet x_d, y_0) -f(x_0,y_0)}{h} =\frac{\partial f(x_0,y_0)}{\partial x} \bullet x_d + \frac{\partial f(x_0,y_0)}{\partial y} \bullet y_d=\nabla f(x_0,y_0) \bullet \vec u$$
+$$D_\vec u = \lim \limits_{h \to 0}  \frac {f(x_0+h \bullet x_d, y_0+ h \bullet y_d) - f(x_0+h \bullet x_d, y_0) + f(x_0+h \bullet x_d, y_0) -f(x_0,y_0)}{h} $$
+$$=\frac{\partial f(x_0,y_0)}{\partial x} \bullet x_d + \frac{\partial f(x_0,y_0)}{\partial y} \bullet y_d=\nabla f(x_0,y_0) \bullet \vec u$$
 
 Provided \\(\theta\\) is the angle between \\(\nabla f(x_0,y_0) \\) and \\(\vec u\\), then
 
@@ -90,7 +104,7 @@ When and only when \\(\nabla f(x_0,y_0)\\) and \\(\vec u\\), in the same directi
 
 $$\lVert \nabla f(x_0,y_0) \rVert\\  \lVert \vec u \rVert\\ cos \theta = \lVert \nabla f(x_0,y_0) \rVert\\  \lVert \vec u \rVert=\lVert \nabla f(x_0,y_0) \rVert$$
 
-### Multi-dimensional Independent Variables
+## Multi-dimensional Independent Variables
 
 We can continue the same analysis with multi-dimentional independent variables. With the dimension grows, the process of argument will become more complicated, but the backend logic is the same. 
 
