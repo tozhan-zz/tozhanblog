@@ -25,18 +25,18 @@ emoji: true
 - [Reference](#reference)
 
 <!-- /TOC -->
-# Introduction
+## Introduction
 Descriptor protocol is a important concept in Python, which is the basis of many Python internal implementation, such as properties, functions, class methods and static methods. This tutorial will elaborate descriptor:
 1. **What is Descriptor** will introduce descriptor protocol, and how Python attribute lookup chain works. 
 2. **Application** will discuss one use case (lazy property) of descriptor protocol. 
 3. **Descriptors in Python Internals** shows how CPython leverage descriptor protocol to implement properties, functions, class & static methods. 
 
-# What is Descriptor
+## What is Descriptor
 First of all, let's define Descriptor. In short, a descriptor is an object meets following conditions: 
 1. The object's class implements [Descriptor Protocol](#descriptor-protocol). 
 2. The object is used as an attribute of another class. 
 
-## Descriptor Protocol
+### Descriptor Protocol
 When we said one class implements descriptor protocol, it means the class implements at least one of below methods. 
 {{< highlight python "linenos=inline" >}}
 __get__(self, instance, owner=None) -> value
@@ -140,7 +140,7 @@ DataDescriptor __get__()
 NonDataDescriptor __get__()
 NonDataDescriptor Value
 ```
-## Attribute Lookup Chain
+### Attribute Lookup Chain
 All of the magic in descriptor comes from attribute lookup chain. Every time you access an attribute, Python will follow a chain to find the attribute. In general, Python will look up below places in order. 
 1. **Data Descriptor** - check whether attribute is a data description by following instance's [MRO](https://www.python.org/download/releases/2.3/mro/).
 2. **Instance Attribute** - check whether attribute exists in instance's `__dict__`. 
@@ -152,12 +152,12 @@ Below is flow chart (got from [[2]](https://www.google.com/books/edition/Python_
 
 As you can see, data descriptor and non-data descriptor have different priorities, we will leverage this property to implement Lazy Property in next section.
 
-# Applications
-## Lazy Property
+## Applications
+### Lazy Property
 Lazy property works like normal Python property, but its value will be cached after the first access. Below is an example about how to define and use lazy property.
 
 {{< highlight python "linenos=inline" >}}
-# define lazy_property class
+## define lazy_property class
 class lazy_property(object):
     def __init__(self, fget):
         self.fget = fget
@@ -202,10 +202,10 @@ I am lazy property
 ```
 
 As you can see, `__get__()` in `lazy_property` is only called at the first time. After that, `lp` attribute will be added to instance's `__dict__`, as instance's `__dict__` has higher priority than non-data descriptor, it hides future `__get__()` call. 
-# Descriptors in Python Internals
+## Descriptors in Python Internals
 As we mentioned before, many of python internal implementations rely on descriptor protocol. Here we analyze some of them in CPython. If you are not familiar with C, [[1]](https://docs.python.org/3/howto/descriptor.html) supplies corresponding Python emulation. 
 
-## Property
+### Property
 `PyProperty_Type` represents Python property class in CPython, as you can see from definition, it defines two descriptor methods: `property_descr_get()` (map to `__get__()`) and `property_descr_set()` (map to `__set__()` and `__delete__`). Obviously, Python property is a data descriptor. 
 {{< highlight c "linenos=inline, hl_lines=5-6" >}}
 PyTypeObject PyProperty_Type = {
@@ -279,7 +279,7 @@ property_descr_set(PyObject *self, PyObject *obj, PyObject *value)
     return 0;
 }
 {{< / highlight >}}
-## Function & Method
+### Function & Method
 `PyFunction_Type` defines `func_descr_get()` (`__get__()`), but doesn't define `__set__()` and `__delete__()`, so Python function/method is a non-data descriptor. 
 {{< highlight c "linenos=inline, hl_lines=5-6" >}}
 PyTypeObject PyFunction_Type = {
@@ -304,7 +304,7 @@ func_descr_get(PyObject *func, PyObject *obj, PyObject *type)
     return PyMethod_New(func, obj);
 }
 {{< / highlight >}}
-## Class Method
+### Class Method
 Similar with normal function & method. Class method is also a non-data descriptor. 
 {{< highlight c "linenos=inline, hl_lines=5-6" >}}
 PyTypeObject PyClassMethod_Type = {
@@ -338,7 +338,7 @@ cm_descr_get(PyObject *self, PyObject *obj, PyObject *type)
 }
 {{< / highlight >}}
 
-## Static Method
+### Static Method
 Statc method is almost the same as class method, but it doesn't need to bind `cls`. So `sm_descr_get()` just returns `sm_callable` directly
 {{< highlight c "linenos=inline, hl_lines=5-6" >}}
 PyTypeObject PyStaticMethod_Type = {
@@ -366,7 +366,7 @@ sm_descr_get(PyObject *self, PyObject *obj, PyObject *type)
 }
 {{< / highlight >}}
 
-# Reference
+## Reference
 
 [1] https://docs.python.org/3/howto/descriptor.html
 

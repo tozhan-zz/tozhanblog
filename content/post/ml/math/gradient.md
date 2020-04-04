@@ -22,14 +22,14 @@ emoji: true
 
 <!-- /TOC -->
 
-# Introduction
+## Introduction
 
 Gradient descent is widely used in machine learning for parameters optimization. If you have heard of gradient many times, but still wonder what is behind it, then you are in the right place. This page will go through:
 
 * The mathematic foundation of gradient. 
 * Application of gradient in Machine Learning
 
-# What is Gradient 
+## What is Gradient 
 
 Let's be straightforward and start from official mathematic definition for gradient ([Wikipedia][https://en.wikipedia.org/wiki/Gradient]): 
 
@@ -50,7 +50,7 @@ If we treat input vector as a point and output vector as a directional vector, t
 
 Now let's use some examples to show how it works. 
 
-## One-dimensional Independent Variable
+### One-dimensional Independent Variable
 
 Considering function: \\(y = f(x) = x^2\\). Assuming we are at point (\\(x_0=2\\)), now question is in which direction we can increase \\(f(x)\\) fastestly? 
 
@@ -72,7 +72,7 @@ $$D_\vec u = [\frac{\partial f(x)}{\partial x}] \bullet \vec u = \nabla f(x) \bu
 
 So gradient \\(\nabla f(x)\\) shows the direction and rate of fastest increase of \\(f(x)\\).
 
-## Two-dimensional Independent Variables
+### Two-dimensional Independent Variables
 
 Let's try another function \\(f(x,y)=x^2+y^2\\), now we have two independent variables and the independent variables space is extended to the plane of \\((x, y)\\). Assuming we are at \\((x_0=7,y_0=7)\\), which direction we can move to increase the value of \\(f(x,y)\\) fastestly?
 
@@ -104,13 +104,13 @@ When and only when \\(\nabla f(x_0,y_0)\\) and \\(\vec u\\), in the same directi
 
 $$\lVert \nabla f(x_0,y_0) \rVert\\  \lVert \vec u \rVert\\ cos \theta = \lVert \nabla f(x_0,y_0) \rVert\\  \lVert \vec u \rVert=\lVert \nabla f(x_0,y_0) \rVert$$
 
-## Multi-dimensional Independent Variables
+### Multi-dimensional Independent Variables
 
 We can continue the same analysis with multi-dimentional independent variables. With the dimension grows, the process of argument will become more complicated, but the backend logic is the same. 
 
-# Gradient in Machine Learning
+## Gradient in Machine Learning
 
-## Gradient Descent
+### Gradient Descent
 
 Gradient descent is an optimization algorithm for finding the local minimum of a differentiable function. Let's go through the algorithm with an example. 
 
@@ -136,7 +136,7 @@ Obviously, We should find \\(a\\) and \\(b\\) to make above error function get m
 
 \\(\eta\\) is the learning rate, it represents how far we want to go in each epoch. 
 
-## Three Types of Gradient Descent
+### Three Types of Gradient Descent
 
 In above example, we use all the training data when updating parameters. When the training dataset becomes huge, the computation will be expensive. To get better performance, there are 3 different types of gradient descent used in the industry. 
 
@@ -144,6 +144,6 @@ In above example, we use all the training data when updating parameters. When th
 2. **Stochastic Gradient Descent:** Parameters are updated after computing the gradient of error with respect to a single training example.
 3. **Mini-Batch Gradient Descent:** Parameters are updated after computing the gradient of error with respect to a subset of the training set. The subset of trainning set is called **Mini-Batch**.
 
-# Conclusion 
+## Conclusion 
 
 In this page, we reviewed mathematic definition of gradient and describe how to use gradient descent to optimize parameters in machine learning. It's always interesting to see how abstract mathematic principle been applied in real world. 
