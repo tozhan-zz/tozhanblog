@@ -1,5 +1,5 @@
 ---
-title: "Gradient"
+title: "How Gradient Works in Machine Learning"
 date: 2020-02-22T13:26:17-08:00
 authors: [Tony Zhang]
 keywords: ["machine learning", "math", "gradient"]
